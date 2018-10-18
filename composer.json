@@ -1,4 +1,12 @@
 {
   "name": "stralkaj/nette-extensions",
-  "description": "Moje vylepseni do Nette"
+  "description": "Moje vylepseni do Nette",
+  "autoload": {
+    "psr-4": {
+      "OnlineImperium\\": "src"
+    }
+  },
+  "require": {
+    "php": ">=5.4"
+  }
 }
