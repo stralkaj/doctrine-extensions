@@ -6,7 +6,7 @@
  * Time: 22:06
  */
 
-namespace OnlineImperium\DoctrineExtensions;
+namespace Stralkaj\DoctrineExtensions;
 
 use Kdyby\Doctrine\EntityManager;
 
