@@ -8,9 +8,6 @@
 
 namespace OnlineImperium\DoctrineExtensions;
 
-
-use App\Model\DaoManager;
-use App\Model\Entity\BaseEntity;
 use Doctrine\ORM\NoResultException;
 use Kdyby\Doctrine\EntityManager;
 use Kdyby\Doctrine\EntityRepository;
@@ -55,7 +52,7 @@ abstract class BaseRepository extends EntityRepository
      */
     public function getDao()
     {
-        return DaoManager::instance();
+        return DaoCollector::instance();
     }
 
 
