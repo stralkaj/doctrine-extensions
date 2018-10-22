@@ -6,7 +6,7 @@
  * Time: 15:41
  */
 
-namespace OnlineImperium\TextTools;
+namespace OnlineImperium\Tools\TextTools;
 
 
 class TextTools
