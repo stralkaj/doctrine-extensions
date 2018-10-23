@@ -11,10 +11,7 @@ use Nette\Application\Application;
 use Nette\SmartObject;
 
 /**
- * Class Parameters
- * @package App\Model
- *
- * @property array $parameters
+ * Class Globals
  */
 class Globals
 {

@@ -13,10 +13,10 @@ use Kdyby\Doctrine\EntityManager;
 use Kdyby\Doctrine\EntityRepository;
 use Kdyby\Doctrine\NotImplementedException;
 use Nette\Utils\Strings;
+use OnlineImperium\Globals;
 
 /**
  * Class BaseRepository
- * @package App\Model\Repository
  *
  * @property EntityManager $em
  * @property DaoCollector $dao
@@ -48,11 +48,11 @@ abstract class BaseRepository extends EntityRepository
     }
 
     /**
-     * @return DaoCollector
+     * @return \App\Model\DaoManager
      */
     public function getDao()
     {
-        return DaoCollector::instance();
+        return Globals::dao();
     }
 
 

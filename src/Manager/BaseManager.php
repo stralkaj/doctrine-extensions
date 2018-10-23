@@ -16,7 +16,7 @@ class BaseManager
     use \Nette\SmartObject;
 
     /**
-     * @var DaoManager
+     * @var \App\Model\DaoManager
      */
     protected $dao;
 

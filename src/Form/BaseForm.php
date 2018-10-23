@@ -9,8 +9,6 @@
 namespace OnlineImperium\Form;
 
 
-use App\Model\DaoManager;
-use App\Model\Globals;
 use Nette\Application\UI\Form;
 use Nette\SmartObject;
 
@@ -23,7 +21,7 @@ abstract class BaseForm
     protected $name;
 
     /**
-     * @var DaoManager
+     * @var \App\Model\DaoManager
      */
     protected $dao;
 

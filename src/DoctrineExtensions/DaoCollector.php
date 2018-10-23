@@ -12,7 +12,6 @@ use Kdyby\Doctrine\EntityManager;
 
 /**
  * Class DaoManager
- * @package App\Model
  *
  * @property EntityManager $em
  */
@@ -23,12 +22,11 @@ class DaoCollector
 
     public function __construct(EntityManager $entityManager)
     {
-        self::initEntityManager($entityManager);
+        $this->initEntityManager($entityManager);
         $this->em = $entityManager;
-        //self::$_instance = $this;
     }
 
-    public static function initEntityManager(EntityManager $em)
+    protected function initEntityManager(EntityManager $em)
     {
         $em->getConfiguration()->addCustomNumericFunction('RAND', 'OnlineImperium\DoctrineExtensions\DqlFunctions\RandFunction');
         $em->getConfiguration()->addCustomNumericFunction('ROUND', 'OnlineImperium\DoctrineExtensions\DqlFunctions\RoundFunction');
