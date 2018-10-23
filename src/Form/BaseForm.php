@@ -11,6 +11,7 @@ namespace OnlineImperium\Form;
 
 use Nette\Application\UI\Form;
 use Nette\SmartObject;
+use OnlineImperium\Globals;
 
 abstract class BaseForm
 {
