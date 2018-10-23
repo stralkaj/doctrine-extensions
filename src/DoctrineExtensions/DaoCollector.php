@@ -30,11 +30,13 @@ class DaoCollector
 
     public static function initEntityManager(EntityManager $em)
     {
-        /*$em->getConfiguration()->addCustomNumericFunction('RAND', 'App\Model\Doctrine\RandFunction');
-        $em->getConfiguration()->addCustomNumericFunction('ROUND', 'App\Model\Doctrine\RoundFunction');
-        $em->getConfiguration()->addCustomNumericFunction('GEODISTANCE', 'App\Model\Doctrine\GeoDistanceFunction');
-        $em->getConfiguration()->addCustomStringFunction('MATCH', 'App\Model\Doctrine\MatchAgainstFunction');
-        $em->getConfiguration()->addCustomStringFunction('REGEXP', 'DoctrineExtensions\Query\Mysql\Regexp');*/
+        $em->getConfiguration()->addCustomNumericFunction('RAND', 'OnlineImperium\DoctrineExtensions\DqlFunctions\RandFunction');
+        $em->getConfiguration()->addCustomNumericFunction('ROUND', 'OnlineImperium\DoctrineExtensions\DqlFunctions\RoundFunction');
+        $em->getConfiguration()->addCustomNumericFunction('GEODISTANCE', 'OnlineImperium\DoctrineExtensions\DqlFunctions\GeoDistanceFunction');
+        $em->getConfiguration()->addCustomStringFunction('MATCH', 'OnlineImperium\DoctrineExtensions\DqlFunctions\MatchAgainstFunction');
+        if (class_exists('DoctrineExtensions\Query\Mysql\Regexp')) {
+            $em->getConfiguration()->addCustomStringFunction('REGEXP', 'DoctrineExtensions\Query\Mysql\Regexp');
+        }
     }
 
     /**
