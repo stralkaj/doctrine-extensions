@@ -44,21 +44,6 @@ class Globals
         $this->parameters = $container->getParameters();
     }
 
-    /*public function getParameters()
-    {
-        return $this->parameters;
-    }
-
-    public function getParameterByPath($path)
-    {
-        $parts = explode('/', $path);
-        $param = $this->parameters;
-        foreach ($parts as $part) {
-            $param = $param[$part];
-        }
-        return $param;
-    }*/
-
     /**
      * @return Globals
      */
@@ -83,6 +68,15 @@ class Globals
         } else {
             return self::instance()->parameters;
         }
+    }
+
+    /**
+     * @return \App\Model\DaoManager
+     */
+    public static function dao()
+    {
+        global $container;
+        return $container->getService("dao");
     }
 
     public static function link($destination, $args = [])

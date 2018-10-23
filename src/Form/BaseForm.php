@@ -31,7 +31,7 @@ abstract class BaseForm
     {
         $this->presenter = $presenter;
         $this->name = $name;
-        $this->dao = DaoManager::instance();
+        $this->dao = Globals::dao();
     }
 
 

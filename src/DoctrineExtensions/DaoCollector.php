@@ -41,6 +41,7 @@ class DaoCollector
 
     /**
      * Vrati jedinou instanci DaoManager v aplikaci
+     * @deprecated Pouzit Globals::dao()
      * @return DaoCollector
      */
     public static function instance()

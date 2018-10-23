@@ -9,7 +9,7 @@
 namespace OnlineImperium\Manager;
 
 
-use App\Model\DaoManager;
+use OnlineImperium\Globals;
 
 class BaseManager
 {
@@ -22,6 +22,6 @@ class BaseManager
 
     public function __construct()
     {
-        $this->dao = DaoManager::instance();
+        $this->dao = Globals::dao();
     }
 }
