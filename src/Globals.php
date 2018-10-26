@@ -49,7 +49,7 @@ class Globals
         global $container;
         return $container->getService("globals");
     }
-    
+
     public function getParameters()
     {
         return $this->parameters;
