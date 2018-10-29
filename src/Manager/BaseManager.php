@@ -24,4 +24,9 @@ class BaseManager
     {
         $this->dao = Globals::dao();
     }
+
+    protected function link($destination, $args = [])
+    {
+        return Globals::link($destination, $args);
+    }
 }
