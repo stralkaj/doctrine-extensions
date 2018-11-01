@@ -22,22 +22,15 @@ class Globals
      */
     protected $application;
 
-    /**
-     * @var \Kdyby\Translation\Translator
-     */
-    protected $translator;
-
 
     protected $parameters;
 
-    public function __construct(Application $application, \Kdyby\Translation\Translator $translator)
+    public function __construct(Application $application)
     {
         global $container;
 
         assert($application != null);
-        assert($translator != null);
         $this->application = $application;//$container->getService('application');
-        $this->translator = $translator;
         $this->parameters = $container->getParameters();
     }
 
@@ -47,7 +40,7 @@ class Globals
     public static function instance()
     {
         global $container;
-        return $container->getService("globals");
+        return $container->getByType(self::class);
     }
 
     public function getParameters()
@@ -98,6 +91,7 @@ class Globals
 
     public static function t($message, $count = null, $parameters = [])
     {
+        return self::getService(\Kdyby\Translation\Translator::class);
         //TODO toto asi nebude fungovat z console!!!
         //$translator = self::instance()->application->getPresenter()->translator;
         $translator = self::instance()->translator;
