@@ -107,7 +107,11 @@ class Globals
     public static function getService($name)
     {
         global $container;
-        return $container->getService($name);
+        $service = $container->getByType($name, false);
+        if (!$service) {
+            $service = $container->getService($name);
+        }
+        return $service;
     }
 
     public static function getSession()
