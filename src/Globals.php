@@ -91,10 +91,7 @@ class Globals
 
     public static function t($message, $count = null, $parameters = [])
     {
-        return self::getService(\Kdyby\Translation\Translator::class);
-        //TODO toto asi nebude fungovat z console!!!
-        //$translator = self::instance()->application->getPresenter()->translator;
-        $translator = self::instance()->translator;
+        $translator = self::getService(\Kdyby\Translation\Translator::class);
         return $translator->translate($message, $count, $parameters);
     }
 
