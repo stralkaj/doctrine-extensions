@@ -35,6 +35,7 @@ class Globals
     }
 
     /**
+     * DI instance of this class
      * @return Globals
      */
     public static function instance()
@@ -43,11 +44,20 @@ class Globals
         return $container->getByType(self::class);
     }
 
+    /**
+     * Array with all parameters in config.neon
+     * @return array
+     */
     public function getParameters()
     {
         return $this->parameters;
     }
 
+    /**
+     * Retrieves parameter from config.neon
+     * @param string $path path/to/parameter
+     * @return array|null
+     */
     public static function getParameter($path = null)
     {
         if ($path) {
@@ -66,6 +76,7 @@ class Globals
     }
 
     /**
+     * Returns DAO Manager with repositories
      * @return \App\Model\DaoManager
      */
     public static function dao()
@@ -74,6 +85,13 @@ class Globals
         return $container->getService("dao");
     }
 
+    /**
+     * Generates link from everywhere
+     *   If you wanna use it from console, make sure parameters/general/baseUrl is set
+     * @param $destination
+     * @param array $args
+     * @return mixed
+     */
     public static function link($destination, $args = [])
     {
         $presenter = self::instance()->application->getPresenter();
@@ -89,12 +107,24 @@ class Globals
         return $linkGenerator->link($destination, $args);
     }
 
+    /**
+     * Translates message from dictionary
+     * @param string $message
+     * @param int $count
+     * @param array $parameters
+     * @return mixed
+     */
     public static function t($message, $count = null, $parameters = [])
     {
         $translator = self::getService(\Kdyby\Translation\Translator::class);
         return $translator->translate($message, $count, $parameters);
     }
 
+    /**
+     * Retrieves DI service by name or class
+     * @param $name
+     * @return null|object
+     */
     public static function getService($name)
     {
         global $container;
@@ -105,6 +135,10 @@ class Globals
         return $service;
     }
 
+    /**
+     * Retrieves session
+     * @return null|object
+     */
     public static function getSession()
     {
         return self::getService('session');

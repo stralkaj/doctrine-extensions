@@ -35,6 +35,8 @@ abstract class BaseRepository extends EntityRepository
     }
 
     /**
+     * Find by idtxt
+     * @param string $idtxt Text identifier of entity
      * @return null|BaseEntity
      */
     public function byIdtxt($idtxt)
@@ -42,12 +44,17 @@ abstract class BaseRepository extends EntityRepository
         return $this->findOneBy(['idtxt' => $idtxt]);
     }
 
+    /**
+     * Retrieves EntityManager
+     * @return EntityManager
+     */
     public function getEm()
     {
         return $this->getEntityManager();
     }
 
     /**
+     * Retrieves DAO Manager
      * @return \App\Model\DaoManager
      */
     public function getDao()
@@ -57,6 +64,7 @@ abstract class BaseRepository extends EntityRepository
 
 
     /**
+     * Default order of entity (array)
      * @return array
      */
     public function defaultOrder()
@@ -68,6 +76,7 @@ abstract class BaseRepository extends EntityRepository
     }
 
     /**
+     * Default order of entity (string)
      * @return string
      */
     public function defaultOrderStr()
@@ -146,7 +155,7 @@ abstract class BaseRepository extends EntityRepository
     }
 
     /**
-     * Vygeneruje unikatni textovy identifikator pro entitu [a-zA-Z0-9\-]+
+     * Generates unique text identifier for entity [a-zA-Z0-9\-]+
      * @param $text
      * @param string $columnName
      * @return string
@@ -169,6 +178,13 @@ abstract class BaseRepository extends EntityRepository
         $this->dao->delete($this->getReference($id));
     }
 
+    /**
+     * Changes order of items by previous position and new position. Priority is recalculated.
+     * @param BaseEntity $item
+     * @param $newPosition
+     * @param $prevPosition
+     * @param null $where
+     */
     public function movePriority(BaseEntity $item, $newPosition, $prevPosition, $where = null)
     {
         $entityName = $this->getEntityName();
@@ -204,6 +220,12 @@ abstract class BaseRepository extends EntityRepository
         $em->flush($item);
     }
 
+    /**
+     * Retrieves minimum existing priority for entity
+     * @param null $where
+     * @param bool $correction
+     * @return int|mixed|null
+     */
     public function getMinPriority($where = null, $correction = true)
     {
         $entityName = $this->getEntityName();

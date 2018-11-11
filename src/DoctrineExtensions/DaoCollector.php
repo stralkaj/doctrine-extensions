@@ -96,6 +96,8 @@ class DaoCollector
     public function delete($entity, $flush = true)
     {
         $this->em->remove($entity);
-        $flush && $this->em->flush();
+        if ($flush) {
+            $this->em->flush();
+        }
     }
 }
