@@ -56,7 +56,7 @@ class Globals
     /**
      * Retrieves parameter from config.neon
      * @param string $path path/to/parameter
-     * @return array|null
+     * @return array|string|null
      */
     public static function getParameter($path = null)
     {
