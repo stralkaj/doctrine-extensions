@@ -17,6 +17,14 @@ abstract class BaseForm
 {
     use SmartObject;
 
+    /**
+     * @var \Nette\Application\UI\Control
+     */
+    protected $parent;
+
+    /**
+     * @var \Nette\Application\UI\Presenter
+     */
     protected $presenter;
 
     protected $name;
@@ -26,9 +34,10 @@ abstract class BaseForm
      */
     protected $dao;
 
-    public function __construct(\Nette\Application\UI\Presenter $presenter, $name)
+    public function __construct(\Nette\Application\UI\Control $control, $name)
     {
-        $this->presenter = $presenter;
+        $this->parent = $control;
+        $this->presenter = $control->getPresenter();
         $this->name = $name;
         $this->dao = Globals::dao();
     }
@@ -51,7 +60,7 @@ abstract class BaseForm
      */
     protected function newForm($addProtection = true)
     {
-        $form = new Form($this->presenter, $this->name);
+        $form = new Form($this->parent, $this->name);
         if ($addProtection) {
             $form->addProtection();
         }
