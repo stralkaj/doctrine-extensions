@@ -67,6 +67,12 @@ abstract class BaseForm
         $form->onValidate[] = [$this, 'validate'];
         $form->onSubmit[] = [$this, 'submit'];
         $form->onSuccess[] = [$this, 'success'];
+        if (class_exists('Kdyby\Translation\Translator')) {
+            $translator = Globals::getService(\Kdyby\Translation\Translator::class);
+            if ($translator) {
+                $form->setTranslator($translator);
+            }
+        }
         return $form;
     }
 
