@@ -28,6 +28,7 @@ class TemplateFilters
         $template->addFilter('rating2stars', "$className::rating2stars");
         $template->addFilter('printArray', "$className::printArray");
         $template->addFilter('yesno', "$className::yesOrNo");
+        $template->addFilter('YesNo', "$className::yesOrNoUpper");
         $template->addFilter('percent', "$className::percent");
         $template->addFilter('spacemb', "$className::spaceMB");
         $template->addFilter('rank2word', "$className::rank2word");
@@ -182,6 +183,11 @@ class TemplateFilters
         {
             return "ne";
         }
+    }
+
+    public static function yesOrNoUpper($value)
+    {
+        return ucfirst(self::yesOrNo($value));
     }
     
     public static function percent($value)

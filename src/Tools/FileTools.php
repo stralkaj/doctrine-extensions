@@ -108,4 +108,18 @@ class FileTools
         throw new \Exception("Nepodarilo se najit nazev pro dalsi polozku v adresari.");
     }
 
+    public static function humanFileSize($bytes, $decimals = 2) {
+        $sz = 'BKMGTP';
+        $factor = floor((strlen($bytes) - 1) / 3);
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
+    }
+
+    public static function extractExtension($filename)
+    {
+        if (preg_match('/\.(\w+)$/', $filename, $matches)) {
+            return $matches[1];
+        }
+        return null;
+    }
+
 }
