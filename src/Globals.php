@@ -8,6 +8,7 @@
 
 namespace OnlineImperium;
 use Nette\Application\Application;
+use Nette\Http\Session;
 use Nette\SmartObject;
 
 /**
@@ -137,7 +138,7 @@ class Globals
 
     /**
      * Retrieves session
-     * @return null|object
+     * @return Session
      */
     public static function getSession()
     {
