@@ -62,4 +62,18 @@ class ArrayTools
         }
         return $array;
     }
+
+    public static function sortByProperty(&$array, $propertyName, $descending = false)
+    {
+        usort($array, function ($a, $b) use ($propertyName, $descending) {
+            if ($a->{$propertyName} == $b->{$propertyName}) {
+                return 0;
+            }
+            $return = ($a->{$propertyName} > $b->{$propertyName}) ? 1 : -1;
+            if ($descending) {
+                return -$return;
+            }
+            return $return;
+        });
+    }
 }

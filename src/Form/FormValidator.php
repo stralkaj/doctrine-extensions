@@ -33,6 +33,8 @@ class FormValidator
 	// Messages:
     const REQUIRED_MSG = 'Toto pole je povinné';
 	const PASSWORD_MSG = 'Heslo musí mít min. 8 znaků a obsahovat velká a malá písmena a číslice';
+	const PASSWORD_AGAIN_MSG = 'Hesla se musí shodovat';
+	const CAPTCHA_MSG = 'Ověřte, že nejste robot';
 
 
 	public static function validateBankAccount(IControl $control)
