@@ -22,6 +22,9 @@ class BaseTemplateMailer
     use \Nette\SmartObject;
 
     protected $templatesPath;
+
+    protected $layoutPath;
+
     protected $headerTemplate = "_header.latte";
     protected $footerTemplate = "_footer.latte";
 
@@ -73,7 +76,8 @@ class BaseTemplateMailer
         $latte = new \Latte\Engine();
         TemplateFilters::setupTemplateFilters($latte);
         $allParams = $this->params + TemplateFilters::getDefaultVars();
-        $html = $latte->renderToString($this->templatesPath . "/_layout.latte", $allParams);
+        $layoutPath = $this->layoutPath ?? $this->templatesPath . "/_layout.latte";
+        $html = $latte->renderToString($layoutPath, $allParams);
 
         $mail = new Message();
         $mail->setFrom($this->sender)
@@ -110,7 +114,7 @@ class BaseTemplateMailer
         $p = &$this->params;
         $this->params['header_file'] = $this->headerTemplate;
         $this->params['footer_file'] = $this->footerTemplate;
-        $this->params['content_file'] = $this->templateName . '.latte';
+        $this->params['content_file'] = realpath($this->templatesPath . '/'. $this->templateName . '.latte');
         $p['subject'] = $this->subject;
         $p['headline'] = ($this->headline) ? $this->headline : $this->subject;
 
