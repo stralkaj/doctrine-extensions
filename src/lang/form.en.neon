@@ -1,0 +1,11 @@
+base:
+	Send: 'Send'
+	Save: 'Save'
+	YourEmail: 'Your e-mail'
+error:
+	required: 'This field is required'
+	email: 'Enter e-mail in valid format'
+	password: 'Password has to contain 8 characters with lowercase, uppercase and numbers'
+	passwordAgain: 'Passwords has to be same'
+	captcha: 'Prove you are not a robot'
+	bankAccount: 'Enter valid bank account'

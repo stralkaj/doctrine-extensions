@@ -31,10 +31,12 @@ class FormValidator
 	const PASSWORD_REGEX = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$';
 
 	// Messages:
-    const REQUIRED_MSG = 'Toto pole je povinné';
-	const PASSWORD_MSG = 'Heslo musí mít min. 8 znaků a obsahovat velká a malá písmena a číslice';
-	const PASSWORD_AGAIN_MSG = 'Hesla se musí shodovat';
-	const CAPTCHA_MSG = 'Ověřte, že nejste robot';
+    const REQUIRED_MSG = 'form.error.required';
+	const PASSWORD_MSG = 'form.error.password';
+	const PASSWORD_AGAIN_MSG = 'form.error.passwordAgain';
+	const EMAIL_MSG = 'form.error.email';
+	const CAPTCHA_MSG = 'form.error.captcha';
+	const BANK_ACCOUNT_MSG = 'form.error.bankAccount';
 
 
 	public static function validateBankAccount(IControl $control)

@@ -3,6 +3,10 @@
 namespace OnlineImperium\Mailer;
 
 use Nette;
+use Nette\Application\LinkGenerator;
+use Nette\Application\UI\ITemplateFactory;
+use Nette\Bridges\ApplicationLatte\ILatteFactory;
+use Nette\Bridges\ApplicationLatte\TemplateFactory;
 use Nette\Mail\Message;
 use Nette\Mail\SendmailMailer;
 use Nette\Mail\SmtpMailer;
@@ -14,7 +18,7 @@ use OnlineImperium\Tools\TextTools;
 /**
  * Vytvori HTML e-mail z latte sablony a odesle jej.
  * @author Jan Stralka
- *
+ * @link https://phpfashion.com/generovani-odkazu-kuprikladu-v-emailech-a-nette
  * @property string $templateName
  */
 class BaseTemplateMailer
@@ -65,6 +69,10 @@ class BaseTemplateMailer
      */
     public function send($to)
     {
+        if ($to === null || $to === '') {
+            return;
+        }
+
         if (!is_array($to)) {
             $to = [$to];
         }
@@ -73,7 +81,15 @@ class BaseTemplateMailer
 
         // https://phpfashion.com/generovani-odkazu-kuprikladu-v-emailech-a-nette
 
-        $latte = new \Latte\Engine();
+
+        //$latte = $latteFactory->create();
+        //$template = $this->templateFactory->createTemplate();
+        /** @var ILatteFactory $latteFactory */
+        $latteFactory = Globals::getService(ILatteFactory::class);
+        $latte = $latteFactory->create();//$template->getLatte();
+
+        \Nette\Bridges\ApplicationLatte\UIMacros::install($latte->getCompiler());
+        $latte->addProvider('uiControl', Globals::getService(LinkGenerator::class));
         TemplateFilters::setupTemplateFilters($latte);
         $allParams = $this->params + TemplateFilters::getDefaultVars();
         $layoutPath = $this->layoutPath ?? $this->templatesPath . "/_layout.latte";

@@ -9,6 +9,7 @@
 namespace OnlineImperium\Form;
 
 
+use Kdyby\Translation\Translator;
 use Nette\Application\UI\Form;
 use Nette\SmartObject;
 use OnlineImperium\Globals;
@@ -68,8 +69,10 @@ abstract class BaseForm
         $form->onSubmit[] = [$this, 'submit'];
         $form->onSuccess[] = [$this, 'success'];
         if (class_exists('Kdyby\Translation\Translator')) {
+            /** @var Translator $translator */
             $translator = Globals::getService(\Kdyby\Translation\Translator::class);
             if ($translator) {
+                //$domain = $translator->domain('form');
                 $form->setTranslator($translator);
             }
         }

@@ -1,0 +1,11 @@
+base:
+	Send: 'Odeslat'
+	Save: 'Uložit'
+	YourEmail: 'Váš e-mail'
+error:
+	required: 'Toto pole je povinné'
+	email: 'Zadejte e-mail ve správném formátu'
+	password: 'Heslo musí mít min. 8 znaků a obsahovat velká a malá písmena a číslice'
+	passwordAgain: 'Hesla se musí shodovat'
+	captcha: 'Ověřte, že nejste robot'
+	bankAccount: 'Zadejte validní číslo bankovního účtu'
