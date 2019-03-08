@@ -1,0 +1,10 @@
+lang:
+	code: 'sk'
+	code_REGION: 'sk_SK'
+	region: 'sk'
+	name: 'Slovensky'
+date:
+	formatDateTime: 'j.n.Y G:i'
+	formatDateTimeSeconds: 'j.n.Y G:i:s'
+	formatDate: 'j.n.Y'
+	formatTime: 'G:i'

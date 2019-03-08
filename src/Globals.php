@@ -144,4 +144,10 @@ class Globals
     {
         return self::getService('session');
     }
+
+    public static function getBasePathAbs()
+    {
+        $homepage = Globals::link('//:Front:Homepage:');
+        return preg_replace('#/$#', '', $homepage);
+    }
 }

@@ -1,0 +1,10 @@
+lang:
+	code: 'en'
+	code_REGION: 'en_US'
+	region: 'us'
+	name: 'English'
+date:
+	formatDateTime: 'j/n/Y G:i'
+	formatDateTimeSeconds: 'j/n/Y G:i:s'
+	formatDate: 'j/n/Y'
+	formatTime: 'G:i'

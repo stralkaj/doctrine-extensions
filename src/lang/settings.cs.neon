@@ -1,0 +1,10 @@
+lang:
+	code: 'cs'
+	code_REGION: 'cs_CZ'
+	region: 'cz'
+	name: 'Česky'
+date:
+	formatDateTime: 'j.n.Y G:i'
+	formatDateTimeSeconds: 'j.n.Y G:i:s'
+	formatDate: 'j.n.Y'
+	formatTime: 'G:i'
