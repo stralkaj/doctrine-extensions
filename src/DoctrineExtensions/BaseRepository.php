@@ -136,12 +136,9 @@ abstract class BaseRepository extends EntityRepository
      * @param array $criteria
      * @return array
      */
-    public function getKeysValues($key = "id", $value = "name", $criteria = [])
+    public function getKeysValues($key = "id", $value = "name", $criteria = [], $sort = null)
     {
-        $sort = [$value => 'ASC'];
-        if (property_exists($this->getEntityName(), "priority")) {
-            $sort = ['priority' => 'DESC'];
-        }
+        $sort = $sort ?: $this->defaultOrder();
         return $this->findPairs($criteria, $value, $sort, $key);
     }
 
