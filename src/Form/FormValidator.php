@@ -28,7 +28,7 @@ class FormValidator
     const ICO_REGEX = '^[0-9]{8}$';
     const DIC_REGEX = '^(|[A-Z]{2}[0-9A-Z]{2,12})$';
 	const BIRTH_NUMBER_REGEX = '^(\d\d)(\d\d)(\d\d) */? *(\d\d\d)(\d?)$';
-	const PASSWORD_REGEX = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$';
+	const PASSWORD_REGEX = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$';
 
 	// Messages:
     const REQUIRED_MSG = 'form.error.required';
