@@ -31,10 +31,13 @@ class FormValidator
 	const PASSWORD_REGEX = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$';
 
 	// Messages:
+    /** @deprecated  */
     const REQUIRED_MSG = 'form.error.required';
+    /** @deprecated  */
+    const EMAIL_MSG = 'form.error.email';
+
 	const PASSWORD_MSG = 'form.error.password';
 	const PASSWORD_AGAIN_MSG = 'form.error.passwordAgain';
-	const EMAIL_MSG = 'form.error.email';
 	const CAPTCHA_MSG = 'form.error.captcha';
 	const BANK_ACCOUNT_MSG = 'form.error.bankAccount';
 
@@ -48,7 +51,7 @@ class FormValidator
         }
         $first = sprintf('%06d', $matches[1]);
         $second = sprintf('%010d', $matches[3]);
-        barDump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
+        bdump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
 
         // FIRST PART - MODULO 11
         $isOk = (10 * $first[0]

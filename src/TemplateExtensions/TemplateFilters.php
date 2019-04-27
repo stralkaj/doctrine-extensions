@@ -202,7 +202,7 @@ class TemplateFilters
     
     public static function spaceMB($space,$unlimited='neomezený')
     {
-        barDump($unlimited);
+        bdump($unlimited);
         if ($space === null) {
             return "-";
         }
@@ -294,7 +294,7 @@ class TemplateFilters
                 $decimals = 0;
             }
         }
-        barDump($input);
+        bdump($input);
         $result = number_format($input, $decimals, $decimalPoint, $thousands);
         return $result;
     }

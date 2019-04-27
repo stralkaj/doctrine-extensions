@@ -19,34 +19,36 @@ abstract class BaseForm
     use SmartObject;
 
     /**
-     * @var \Nette\Application\UI\Control
-     */
-    protected $parent;
-
-    /**
      * @var \Nette\Application\UI\Presenter
      */
     protected $presenter;
-
-    protected $name;
 
     /**
      * @var \App\Model\DaoManager
      */
     protected $dao;
 
-    public function __construct(\Nette\Application\UI\Control $control, $name)
+    public function __construct()
     {
-        $this->parent = $control;
-        $this->presenter = $control->getPresenter();
-        $this->name = $name;
         $this->dao = Globals::dao();
     }
 
 
-    public abstract function create();
+    public final function create()
+    {
+        $form = $this->newForm();
+        $this->init($form);
+        return $form;
+    }
+
+    protected abstract function init(Form $form);
 
     public abstract function success(Form $form);
+
+
+    public function attached(Form $form)
+    {
+    }
 
     public function validate(Form $form)
     {
@@ -58,16 +60,21 @@ abstract class BaseForm
 
     /**
      * @return Form
+     * Docasne prepsano na private - aby se nepouzivalo ve starych subclass
      */
-    protected function newForm($addProtection = true)
+    private function newForm($addProtection = true)
     {
-        $form = new Form($this->parent, $this->name);
+        $form = new Form();
         if ($addProtection) {
             $form->addProtection();
         }
         $form->onValidate[] = [$this, 'validate'];
         $form->onSubmit[] = [$this, 'submit'];
         $form->onSuccess[] = [$this, 'success'];
+        $form->onAnchor[] = function (Form $attachedForm) {
+            $this->presenter = $attachedForm->getPresenter();
+        };
+        $form->onAnchor[] = [$this, 'attached'];
         if (class_exists('Kdyby\Translation\Translator')) {
             /** @var Translator $translator */
             $translator = Globals::getService(\Kdyby\Translation\Translator::class);
