@@ -31,10 +31,13 @@ class FormValidator
 	const PASSWORD_REGEX = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$';
 
 	// Messages:
+    /** @deprecated  */
     const REQUIRED_MSG = 'form.error.required';
+    /** @deprecated  */
+    const EMAIL_MSG = 'form.error.email';
+
 	const PASSWORD_MSG = 'form.error.password';
 	const PASSWORD_AGAIN_MSG = 'form.error.passwordAgain';
-	const EMAIL_MSG = 'form.error.email';
 	const CAPTCHA_MSG = 'form.error.captcha';
 	const BANK_ACCOUNT_MSG = 'form.error.bankAccount';
 
@@ -46,11 +49,17 @@ class FormValidator
         if (!preg_match('/' . self::BANK_ACCOUNT_REGEX . '/', $value, $matches)) {
             return false;
         }
+<<<<<<< HEAD
         //return true;
         //TODO vyresit problem s velkymi cisly
         $first = str_pad($matches[1], 6, '0', STR_PAD_LEFT); //sprintf('%06d', $matches[1]);
         $second = str_pad($matches[3], 10, '0', STR_PAD_LEFT); //sprintf('%010d', $matches[3]);
         //bdump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
+=======
+        $first = sprintf('%06d', $matches[1]);
+        $second = sprintf('%010d', $matches[3]);
+        bdump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
+>>>>>>> 64c176256a4b41ec4e5f63d0c0ada36129b09f4b
 
         // FIRST PART - MODULO 11
         $v = gmp_add(10 * $first[0], 5 * $first[1]);
