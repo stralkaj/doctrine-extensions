@@ -41,44 +41,43 @@ class FormValidator
 
 	public static function validateBankAccount(IControl $control)
     {
-        assert($control instanceof TextBase);
+/*         assert($control instanceof TextBase);
         $value = $control->getValue();
         if (!preg_match('/' . self::BANK_ACCOUNT_REGEX . '/', $value, $matches)) {
-            return FALSE;
+            return false;
         }
-        $first = sprintf('%06d', $matches[1]);
-        $second = sprintf('%010d', $matches[3]);
-        barDump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
+        //return true;
+        //TODO vyresit problem s velkymi cisly
+        $first = str_pad($matches[1], 6, '0', STR_PAD_LEFT); //sprintf('%06d', $matches[1]);
+        $second = str_pad($matches[3], 10, '0', STR_PAD_LEFT); //sprintf('%010d', $matches[3]);
+        //bdump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
 
         // FIRST PART - MODULO 11
-        $isOk = (10 * $first[0]
-                + 5 * $first[1]
-                + 8 * $first[2]
-                + 4 * $first[3]
-                + 2 * $first[4]
-                + 1 * $first[5])
-            % 11 == 0;
-
+        $v = gmp_add(10 * $first[0], 5 * $first[1]);
+        $v = gmp_add($v, 8 * $first[2]);
+        $v = gmp_add($v, 4 * $first[3]);
+        $v = gmp_add($v, 2 * $first[4]);
+        $v = gmp_add($v, 1 * $first[5]);
+        $isOk = (gmp_intval(gmp_mod($v, 11)) == 0);
         if (!$isOk) {
             return false;
         }
 
         // SECOND PART - MODULO 11
-        $isOk = (6 * $second[0]
-                + 3 * $second[1]
-                + 7 * $second[2]
-                + 9 * $second[3]
-                + 10 * $second[4]
-                + 5 * $second[5]
-                + 8 * $second[6]
-                + 4 * $second[7]
-                + 2 * $second[8]
-                + 1 * $second[9])
-            % 11 == 0;
+        $v = gmp_add(6 * $second[0], 3 * $second[1]);
+        $v = gmp_add($v, 7 * $second[2]);
+        $v = gmp_add($v, 9 * $second[3]);
+        $v = gmp_add($v, 10 * $second[4]);
+        $v = gmp_add($v, 5 * $second[5]);
+        $v = gmp_add($v, 8 * $second[6]);
+        $v = gmp_add($v, 4 * $second[7]);
+        $v = gmp_add($v, 2 * $second[8]);
+        $v = gmp_add($v, 1 * $second[9]);
+        $isOk = (gmp_intval(gmp_mod($v, 11)) == 0);
 
         if (!$isOk) {
             return false;
-        }
+        } */
 
         return true;
     }
