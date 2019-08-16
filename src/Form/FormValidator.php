@@ -58,6 +58,10 @@ class FormValidator
         $second = str_pad($matches[3], 10, '0', STR_PAD_LEFT); //sprintf('%010d', $matches[3]);
         bdump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
 
+        if (!function_exists('gmp_add')) {
+            // Fallback pro vyvojare, co nemaji aktivovanou knihovnu
+            return true;
+        }
         // FIRST PART - MODULO 11
         $v = gmp_add(10 * $first[0], 5 * $first[1]);
         $v = gmp_add($v, 8 * $first[2]);
