@@ -104,6 +104,23 @@ class TextTools
         return strtr($text, $transTab);
     }
 
+    public static function strposArray($haystack, $needleArray, $caseSensitive = false)
+    {
+        if (!$caseSensitive) {
+            $haystack = mb_strtolower($haystack);
+        }
+        foreach ($needleArray as $needle) {
+            if (!$caseSensitive) {
+                $needle = mb_strtolower($needle);
+            }
+            $pos = strpos($haystack, $needle);
+            if ($pos !== false) {
+                return $pos;
+            }
+        }
+        return false;
+    }
+
     public static function getDomain($url)
     {
         $parsed = parse_url($url);

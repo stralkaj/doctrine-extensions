@@ -1,10 +1,8 @@
 lang:
-	code: 'sk'
-	code_REGION: 'sk_SK'
-	code-region: 'sk-sk'
-	html-code-region: sk
-	region: 'sk'
-	name: 'Slovensky'
+	code: 'de'
+	code_REGION: 'de_DE'
+	region: 'de'
+	name: 'Deutch'
 date:
 	formatDateTime: 'j.n.Y G:i'
 	formatDateTimeSeconds: 'j.n.Y G:i:s'

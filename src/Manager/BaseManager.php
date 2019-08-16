@@ -29,4 +29,9 @@ class BaseManager
     {
         return Globals::link($destination, $args);
     }
+
+    protected function t($message, $count = null, $parameters = [])
+    {
+        return Globals::t($message, $count, $parameters);
+    }
 }

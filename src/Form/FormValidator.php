@@ -44,22 +44,19 @@ class FormValidator
 
 	public static function validateBankAccount(IControl $control)
     {
-/*         assert($control instanceof TextBase);
+        assert($control instanceof TextBase);
         $value = $control->getValue();
         if (!preg_match('/' . self::BANK_ACCOUNT_REGEX . '/', $value, $matches)) {
             return false;
         }
-<<<<<<< HEAD
-        //return true;
+        if (!function_exists('gmp_add')) {
+            // Pokud funkce neexistuje, tak se na validaci vykasleme
+            return true;
+        }
         //TODO vyresit problem s velkymi cisly
         $first = str_pad($matches[1], 6, '0', STR_PAD_LEFT); //sprintf('%06d', $matches[1]);
         $second = str_pad($matches[3], 10, '0', STR_PAD_LEFT); //sprintf('%010d', $matches[3]);
-        //bdump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
-=======
-        $first = sprintf('%06d', $matches[1]);
-        $second = sprintf('%010d', $matches[3]);
         bdump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
->>>>>>> 64c176256a4b41ec4e5f63d0c0ada36129b09f4b
 
         // FIRST PART - MODULO 11
         $v = gmp_add(10 * $first[0], 5 * $first[1]);
@@ -86,7 +83,7 @@ class FormValidator
 
         if (!$isOk) {
             return false;
-        } */
+        }
 
         return true;
     }

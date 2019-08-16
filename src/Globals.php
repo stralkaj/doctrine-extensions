@@ -117,6 +117,7 @@ class Globals
      */
     public static function t($message, $count = null, $parameters = [])
     {
+        /** @var \Kdyby\Translation\Translator */
         $translator = self::getService(\Kdyby\Translation\Translator::class);
         return $translator->translate($message, $count, $parameters);
     }
