@@ -1,6 +1,8 @@
 lang:
 	code: 'de'
 	code_REGION: 'de_DE'
+	code-region: 'de-de'
+	html-code-region: de
 	region: 'de'
 	name: 'Deutch'
 date:
@@ -8,3 +10,5 @@ date:
 	formatDateTimeSeconds: 'j.n.Y G:i:s'
 	formatDate: 'j.n.Y'
 	formatTime: 'G:i'
+general:
+	months: 'januar|februar|märz|april|mai|juni|juli|august|september|oktober|november|dezember'

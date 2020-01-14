@@ -20,9 +20,15 @@ class BaseManager
      */
     protected $dao;
 
+    /**
+     * @var \Kdyby\Translation\Translator
+     */
+    protected $translator;
+
     public function __construct()
     {
         $this->dao = Globals::dao();
+        $this->translator = Globals::getService(\Kdyby\Translation\Translator::class);
     }
 
     protected function link($destination, $args = [])
@@ -32,6 +38,6 @@ class BaseManager
 
     protected function t($message, $count = null, $parameters = [])
     {
-        return Globals::t($message, $count, $parameters);
+        return $this->translator->translate($message, $count, $parameters);
     }
 }

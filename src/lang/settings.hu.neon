@@ -1,0 +1,14 @@
+lang:
+	code: 'hu'
+	code_REGION: 'hu_HU'
+	code-region: 'hu-hu'
+	html-code-region: hu
+	region: 'hu'
+	name: 'Magyar'
+date:
+	formatDateTime: 'j.n.Y G:i'
+	formatDateTimeSeconds: 'j.n.Y G:i:s'
+	formatDate: 'j.n.Y'
+	formatTime: 'G:i'
+general:
+	months: 'január|február|március|április|május|június|július|augusztus|szeptember|október|november|december'

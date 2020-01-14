@@ -10,3 +10,5 @@ date:
 	formatDateTimeSeconds: 'j.n.Y G:i:s'
 	formatDate: 'j.n.Y'
 	formatTime: 'G:i'
+general:
+	months: 'leden|únor|březen|duben|květen|červen|červenec|srpen|září|říjen|listopad|prosinec'

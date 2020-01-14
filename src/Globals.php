@@ -115,11 +115,11 @@ class Globals
      * @param array $parameters
      * @return mixed
      */
-    public static function t($message, $count = null, $parameters = [])
+    public static function t($message, $count = null, $parameters = [], $domain = null, $locale = null)
     {
         /** @var \Kdyby\Translation\Translator */
         $translator = self::getService(\Kdyby\Translation\Translator::class);
-        return $translator->translate($message, $count, $parameters);
+        return $translator->translate($message, $count, $parameters, $domain, $locale);
     }
 
     /**

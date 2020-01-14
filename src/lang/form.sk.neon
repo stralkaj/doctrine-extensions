@@ -29,3 +29,4 @@ error:
 	passwordAgain: 'Heslá sa musí zhodovať'
 	captcha: 'Overte, že nie ste robot'
 	bankAccount: 'Zadajte platné číslo bankového účtu'
+	iban: 'Zadejte platný IBAN.'

@@ -10,6 +10,7 @@ namespace OnlineImperium\Core;
 
 
 use Nette\Application\Routers\RouteList;
+use OnlineImperium\Globals;
 
 /**
  * Class BaseRouterFactory
@@ -43,4 +44,9 @@ abstract class BaseRouterFactory
     }
 
     protected abstract function defineRouter(RouteList $router);
+
+    protected function t($message, $count = null, $parameters = [])
+    {
+        return Globals::t($message, $count, $parameters);
+    }
 }
