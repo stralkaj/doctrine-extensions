@@ -29,6 +29,7 @@ class FormValidator
     const DIC_REGEX = '^(|[A-Z]{2}[0-9A-Z]{2,12})$';
 	const BIRTH_NUMBER_REGEX = '^(\d\d)(\d\d)(\d\d) */? *(\d\d\d)(\d?)$';
 	const PASSWORD_REGEX = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$';
+	const IBAN_REGEX = '^[A-Z]{2}(?:[ ]?[0-9]){18,20}$';
 
 	// Messages:
     /** @deprecated  */
@@ -40,6 +41,7 @@ class FormValidator
 	const PASSWORD_AGAIN_MSG = 'form.error.passwordAgain';
 	const CAPTCHA_MSG = 'form.error.captcha';
 	const BANK_ACCOUNT_MSG = 'form.error.bankAccount';
+	const IBAN_MSG = 'form.error.iban';
 
 
 	public static function validateBankAccount(IControl $control)
@@ -49,9 +51,14 @@ class FormValidator
         if (!preg_match('/' . self::BANK_ACCOUNT_REGEX . '/', $value, $matches)) {
             return false;
         }
+        if (!function_exists('gmp_add')) {
+            // Pokud funkce neexistuje, tak se na validaci vykasleme
+            return true;
+        }
+        //TODO vyresit problem s velkymi cisly
         $first = str_pad($matches[1], 6, '0', STR_PAD_LEFT); //sprintf('%06d', $matches[1]);
         $second = str_pad($matches[3], 10, '0', STR_PAD_LEFT); //sprintf('%010d', $matches[3]);
-        //bdump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
+        bdump("First: $first, second: $second"); //TODO vyresit problem s pretekanim
 
         if (!function_exists('gmp_add')) {
             // Fallback pro vyvojare, co nemaji aktivovanou knihovnu

@@ -1,0 +1,14 @@
+lang:
+	code: 'ro'
+	code_REGION: 'ro_RO'
+	code-region: 'ro-ro'
+	html-code-region: ro
+	region: 'ro'
+	name: 'Românesc'
+date:
+	formatDateTime: 'j.n.Y G:i'
+	formatDateTimeSeconds: 'j.n.Y G:i:s'
+	formatDate: 'j.n.Y'
+	formatTime: 'G:i'
+general:
+	months: 'Ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie'

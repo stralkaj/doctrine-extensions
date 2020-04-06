@@ -69,6 +69,26 @@ class FileTools
         }
     }
 
+    public static function scanDirByDate($dir, $desc = false)
+    {
+        $ignored = ['.', '..'];
+        $filesTime = [];
+        $files = scandir($dir);
+        foreach ($files as $file) {
+            if (in_array($file, $ignored)) continue;
+            $filesTime[$file] = filemtime($dir . '/' . $file);
+        }
+
+        if ($desc) {
+            arsort($filesTime);
+        } else {
+            asort($filesTime);
+        }
+        $filesTime = array_keys($filesTime);
+
+        return ($filesTime) ? $filesTime : [];
+    }
+
     public static function dirFiles($dir)
     {
         $dir = array();

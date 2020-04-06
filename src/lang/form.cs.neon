@@ -25,7 +25,8 @@ error:
 	selectBoxValid: 'Zadejte platnou hodnotu z výběru.'
 	uploadControlValid: 'Při nahrávání souboru došlo k chybě.'
 
-	password: 'Heslo musí mít min. 8 znaků a obsahovat velká a malá písmena a číslice'
-	passwordAgain: 'Hesla se musí shodovat'
-	captcha: 'Ověřte, že nejste robot'
-	bankAccount: 'Zadejte platné číslo bankovního účtu'
+	password: 'Heslo musí mít min. 8 znaků a obsahovat velká a malá písmena a číslice.'
+	passwordAgain: 'Hesla se musí shodovat.'
+	captcha: 'Ověřte, že nejste robot.'
+	bankAccount: 'Zadejte platné číslo bankovního účtu.'
+	iban: 'Zadejte platný IBAN.'

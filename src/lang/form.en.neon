@@ -25,7 +25,8 @@ error:
 	selectBoxValid: 'Please select a valid option.'
 	uploadControlValid: 'An error occurred during file upload.'
 
-	password: 'Password has to contain 8 characters with lowercase, uppercase and numbers'
-	passwordAgain: 'Passwords has to be same'
-	captcha: 'Prove you are not a robot'
-	bankAccount: 'Enter valid bank account'
+	password: 'Password has to contain 8 characters with lowercase, uppercase and numbers.'
+	passwordAgain: 'Passwords has to be same.'
+	captcha: 'Prove you are not a robot.'
+	bankAccount: 'Enter valid bank account.'
+	iban: 'Enter valid IBAN.'

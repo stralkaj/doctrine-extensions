@@ -1,6 +1,8 @@
 lang:
 	code: 'en'
 	code_REGION: 'en_US'
+	code-region: 'en-us'
+	html-code-region: en
 	region: 'us'
 	name: 'English'
 date:
@@ -8,3 +10,5 @@ date:
 	formatDateTimeSeconds: 'j/n/Y G:i:s'
 	formatDate: 'j/n/Y'
 	formatTime: 'G:i'
+general:
+	months: 'january|february|march|april|may|june|july|august|september|october|november|december'
