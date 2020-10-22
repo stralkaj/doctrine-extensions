@@ -29,7 +29,11 @@ abstract class BaseEntity extends \Kdyby\Doctrine\Entities\BaseEntity
                 $value = $this->{$property->getName()};
 
                 if ($value instanceof BaseEntity) {
-                    $value = $value->getId();
+                    if (property_exists($value, 'id')) {
+                        $value = $value->id;
+                    } else {
+                        continue;
+                    }
                 } elseif ($value instanceof ArrayCollection || $value instanceof PersistentCollection) {
                     $this->skip = false;
                     $value = array_map(function (BaseEntity $entity) {
@@ -37,7 +41,7 @@ abstract class BaseEntity extends \Kdyby\Doctrine\Entities\BaseEntity
                             $this->skip = true;
                             return null;
                         }
-                        return $entity->getId();
+                        return $entity->id;
                     }, $value->toArray());
                     if ($this->skip) {
                         continue;

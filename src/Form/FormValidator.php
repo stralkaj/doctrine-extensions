@@ -29,7 +29,7 @@ class FormValidator
     const DIC_REGEX = '^(|[A-Z]{2}[0-9A-Z]{2,12})$';
 	const BIRTH_NUMBER_REGEX = '^(\d\d)(\d\d)(\d\d) */? *(\d\d\d)(\d?)$';
 	const PASSWORD_REGEX = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$';
-	const IBAN_REGEX = '^[A-Z]{2}(?:[ ]?[0-9]){18,20}$';
+	const IBAN_REGEX = '^[A-Z]{2}(?:[ ]?[0-9A-Z]){14,32}$';
 
 	// Messages:
     /** @deprecated  */

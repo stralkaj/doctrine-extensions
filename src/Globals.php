@@ -122,10 +122,21 @@ class Globals
         return $translator->translate($message, $count, $parameters, $domain, $locale);
     }
 
+    public static function translateByLocale($message, $locale)
+    {
+        /** @var \Kdyby\Translation\Translator */
+        $translator = self::getService(\Kdyby\Translation\Translator::class);
+        $fallbacks = $translator->getFallbackLocales();
+        $translator->setFallbackLocales([]);
+        $translation = $translator->translate($message, null, [], null, $locale);
+        $translator->setFallbackLocales($fallbacks);
+        return $translation;
+    }
+
     /**
      * Retrieves DI service by name or class
      * @param $name
-     * @return null|object
+     * @return object|null
      */
     public static function getService($name)
     {

@@ -93,9 +93,9 @@ abstract class BaseForm
         return $this->presenter->link($destination, $args);
     }
 
-    protected function t($message, $count = null, $parameters = [])
+    protected function t($message, $count = null, $parameters = [], $domain = null, $locale = null)
     {
-        return Globals::t($message, $count, $parameters);
+        return Globals::t($message, $count, $parameters, $domain, $locale);
     }
 
     protected function flashMessage($message, $type = 'info')
